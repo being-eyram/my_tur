@@ -106,7 +106,7 @@ class _MyHomePageState extends State<MyHomePage> {
             label: "Help",
           ),
         ],
-        onTap: (index){
+        onTap: (index) {
           setState(() => selectedTabIndex = index);
         },
       ), // This trailing comma makes auto-formatting nicer for build methods.
@@ -150,18 +150,23 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             SizedBox(height: 12),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 TextButton(
                   onPressed: () {},
                   child: Text("Summary"),
                 ),
-                Spacer(),
-                OutlinedButton(
-                  onPressed: () {},
-                  style: OutlinedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(6))),
-                  child: Text("Cleaning Option"),
+                Flexible(
+                  child: OutlinedButton(
+                    onPressed: () {},
+                    style: OutlinedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(6))),
+                    child: Text(
+                      "Cleaning Option",
+                      maxLines: 1,
+                    ),
+                  ),
                 )
               ],
             ),
