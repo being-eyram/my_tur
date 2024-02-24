@@ -32,6 +32,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  var selectedTabIndex = 0;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -89,6 +91,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: selectedTabIndex,
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.my_library_books_rounded),
@@ -103,20 +106,22 @@ class _MyHomePageState extends State<MyHomePage> {
             label: "Help",
           ),
         ],
+        onTap: (index){
+          setState(() => selectedTabIndex = index);
+        },
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 
-  Future _launchDialog() {
-    return showDialog(
+  void _launchDialog() {
+    showDialog(
       context: context,
       barrierColor: Colors.transparent,
       builder: (context) {
         return SimpleDialog(
           elevation: 0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12)
-          ),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
           backgroundColor: Colors.white,
           surfaceTintColor: Colors.white,
           title: Text(
@@ -154,10 +159,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 OutlinedButton(
                   onPressed: () {},
                   style: OutlinedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(6)
-                    )
-                  ),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(6))),
                   child: Text("Cleaning Option"),
                 )
               ],
